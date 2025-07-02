@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: assign and label Scala Steward PRs
+    conditions:
+      - author=botName # the bot user for Scala Steward
+      - title~=(?i)^Update.*  # Matches titles starting with 'Update'
+    actions:
+      label:
+        add: [dependency-update]
+
+  - name: auto-merge successful Scala Steward PRs
+    conditions:
+      - author=botName # the bot user for Scala Steward
+      - title~=(?i)^Update.*  # Still matches only update PRs
+      - status-success=Build  # Or whatever your CI status name is
+    actions:
+      merge:
+        method: merge  # Could also be "squash" or "rebase"
