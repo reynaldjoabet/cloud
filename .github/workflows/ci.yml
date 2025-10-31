@@ -28,7 +28,7 @@ jobs:
           cache: sbt
 
       - name: Set up sbt
-        uses: sbt/setup-sbt@v1.11
+        uses: sbt/setup-sbt@v1
 
       - name: Build and Test
         run: sbt clean compile test
